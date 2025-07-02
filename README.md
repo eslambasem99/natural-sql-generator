@@ -38,6 +38,23 @@ This project allows you to ask questions in plain English and automatically conv
    > "We have a table called 'customers' with columns for name, age, country, and total spending. VIP customers are defined as those who spent more than 10,000 or are over 50 years old."
 
    This natural language context helps the model understand how to form SQL queries without any formal training step.
+How the Database is Connected:
+
+The connection to the SQLite database is handled using the sqlite3 library. 
+
+A connection object is created using sqlite3.connect("test.db")
+
+A cursor is created to execute SQL commands
+
+The table and data are created using SQL commands in Python
+
+Once done, the connection is committed and closed
+
+If you're using Vanna’s SQLite connector, you can register the database like this:
+
+from vanna.sqlite import SQLite_Connector
+
+vn.connect_to_sqlite("test.db")
 
 3. **Modifications to Vanna Library**:
    By default, Vanna expects `.train()` to be used for passing documentation. In this project, we modified the internal `generate_sql()` method inside Vanna’s `base.py` file to accept a new parameter called `extra_doc`. This allows passing schema context dynamically, without requiring persistent training. It makes the project more flexible and stateless — perfect for notebooks or APIs.
