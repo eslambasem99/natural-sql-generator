@@ -111,7 +111,6 @@ class VannaBase(ABC):
       ddl_list = self.get_related_ddl(question, **kwargs)
       doc_list = self.get_related_documentation(question, **kwargs)
 
-    # ✨ ضفنا هنا شرح إضافي لو موجود
       if extra_doc:
          doc_list.append(extra_doc)
 
